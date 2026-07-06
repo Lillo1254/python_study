@@ -84,6 +84,23 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
   * `valori di default` : i valori di default in python vanno scritti sempre per ultimi il loro posizionamento prima dei valori obbligatori genera un errore di sintassi " def nomeFunction(parametro, parametro = default) "
   * ` *args ` : utilizzare questo parametro speciale permette di inserire in una funziona infiniti parametri
   * `**kwargs` : utilizzare questo parametro speciale permette di inserire infiniti parametri per creare un dizionario chiave valore
+* `try : .. except: .. ` : try esegue il codice potenzialmente "pericoloso" except esegue codice in caso di rottura del primo blocco 
+  * all'interno del blocco try/except possono essere racchiusi altri due blocchi
+    * `else` :questo blocco viene eseguito solo se il try non ha generato errori
+    * `finally` : questo blocco viene eseguito a preiscindere dalla riuscita del blocco try come operazione di pulizia finale del blocco stesso
+* `import` : importazione di funzioni gia pronte all'uso
+  * `from` : viene utilizzato per importare un singolo modulo "from math import sqrt "
+  * `from datetime import datetime` : importazione del modulo datetime per gestire le date per una corretta formattazione si utilizza il metodo .strftime() string format time
+        * strftime() direttive speciali
+          * %d giorni (01-31)
+          * %m Mese (01-12)
+          * %Y Anno (4 cifre)
+          * %H Ore
+          * %M Minuti
+          * %S Secondi
+        * strftime("%d/%m/%Y") giorno mese anno
+* ogni file .py è un modulo che puo essere importato in un altro modulo tramite "import nome_modulo" o "from nome_modulo import funzione"
+* `pip` : utilizzo di questo comando in terminale per installare una nuova libreria ( pip install nome_libreria )
 
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
