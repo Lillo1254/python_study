@@ -101,6 +101,12 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
         * strftime("%d/%m/%Y") giorno mese anno
 * ogni file .py è un modulo che puo essere importato in un altro modulo tramite "import nome_modulo" o "from nome_modulo import funzione"
 * `pip` : utilizzo di questo comando in terminale per installare una nuova libreria ( pip install nome_libreria )
+* `venv : poiche a volte è necessario utilizzare diverse versioni della stessa libreria è altrettanto necessario creare degli ambienti virtuali per evitare conflitti tra versioni di libreria diverse il comando fondamentale per creare un ambiente virtuale è "python -m venv venv" dal momento in cui è attivo sulla riga del terminale comparira la scritta venv che indica che tutte le libreria installate da quel momento in poi saranno installate solo sul progetto in corso`
+  <br>
+* `with open("nome_file" , "w") as file:` : questo modulo si utilizza per scrivere in un file attenzione, se il file gia esiste verra sovrascritto 
+* `with open("nome_file" , "r") as file:` : questo modulo si utilizza per leggere un file attenzione, se il file non esiste lancia errore FileNotFoundError
+  * il file viene generato nella CWD la cartella di current working directory ovvero dove si trova il terminale al momento dell'esecuzione del codice
+  * possiamo decidere dove creare il file inserendo dentro al nome_file il percorso assoluto del file stesso
 
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
