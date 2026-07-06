@@ -77,8 +77,14 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
   * 2 gli elementi non hanno un indice specifico
   * 3 vengono creati con {} come i dict ma non hanno una coppia chiave valore
   * l'abbinamento del comando set() unito al comando list() permette di ripulire una lista per eliminare duplicati list(set())
-
+* `def` : questa parola viene utilizzata per la creazione delle funzioni
+  * def nomeFunction():
+  * def nomeFunction(parametri):
+  * `return` : il return viene utilizzato per restituire qualcosa al di fuori della funzione stessa e interrompe l'esecuzione della funzione tutto ciò che è scritto dopo il return non viene eseguito
+  * `valori di default` : i valori di default in python vanno scritti sempre per ultimi il loro posizionamento prima dei valori obbligatori genera un errore di sintassi " def nomeFunction(parametro, parametro = default) "
+  * ` *args ` : utilizzare questo parametro speciale permette di inserire in una funziona infiniti parametri
+  * `**kwargs` : utilizzare questo parametro speciale permette di inserire infiniti parametri per creare un dizionario chiave valore
 
 ``` 
-nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga
+nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
