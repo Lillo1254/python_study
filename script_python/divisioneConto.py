@@ -1,0 +1,6 @@
+prezzo_cena = float(input("inserisci il prezzo della cena: "))
+numero_persone = int(input("inserisci il numero di persone: "))
+prezzo_per_persona = float(prezzo_cena / numero_persone)
+prezzo_per_persona_due = int(prezzo_cena // numero_persone)
+print(f"il prezzo per persona e' {prezzo_per_persona}")
+print(f"il prezzo per persona e' {prezzo_per_persona_due} arrotondato per difetto")

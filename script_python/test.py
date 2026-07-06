@@ -1,0 +1,1 @@
+print("ciao questo è il primo script")
