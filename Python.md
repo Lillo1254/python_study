@@ -71,7 +71,7 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * `.items` : il metodo .items() si utilizza per estrarre sia le chiavi (key) che i valori (value) contemporaneamente da un dizionario il ciclo for è cosi strutturato utilizzando due variabili invece di una per l'iterazione (for chiave, valore in dict.items(): print() )
 * `.keys()`: per estrarre solo le chiavi
 * `.values()` : per estrarre solo i valori
-* `list comprehension` : python permette di svolgere un operazione effettuata su una lista direttamente su una singola linea sfruttando la creazione di una variabile e l'operazione del ciclo for direttamente nella nuova lista numeri = [1,2,3,4] quadrati_numeri = [numero * 2 for numero in numeri]
+* `list comprehension` : python permette di svolgere un operazione effettuata su una lista direttamente su una singola linea sfruttando la creazione di una variabile e l'operazione del ciclo for direttamente nella nuova lista numeri = [1,2,3,4] quadrati_numeri = [numero * 2 for numero in numeri] è possibile anche utilizzare una condizione if all'interno delle parentesi quadra specificatamente la frase sarebbe [espressione matematica for elemento in lista if condizione vera]
 * `set` : il set è una collezione che ha tre caratteristiche uniche
   * 1 non accetta duplicati se vengono inseriti argomenti uguali python terrà conto solo del primo
   * 2 gli elementi non hanno un indice specifico
@@ -106,8 +106,40 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * `with open("nome_file" , "w") as file:` : questo modulo si utilizza per scrivere in un file attenzione, se il file gia esiste verra sovrascritto 
 * `with open("nome_file" , "r") as file:` : questo modulo si utilizza per leggere un file attenzione, se il file non esiste lancia errore FileNotFoundError
   * il file viene generato nella CWD la cartella di current working directory ovvero dove si trova il terminale al momento dell'esecuzione del codice
-  * possiamo decidere dove creare il file inserendo dentro al nome_file il percorso assoluto del file stesso
+  * possiamo decidere dove creare il file inserendo dentro al nome_file il percorso assoluto del file stesso o usare il `modulo os` per far ricercare a python il file stesso
+* `with open("nome_file" , "a") as file:` :questo modulo si utilizza per "appendere" in fondo al file qualcosa piuttosto che sovrascrivere o creare il file
 
+#### Creazione istanze e oggetti (ereditarietà, incapsulamento e polimorfismo)
+* `class` : la definizione class seguita da un Nome che per convenzione ha la prima lettera maiuscola è una definizione di regole struturali per creare un oggetto che le rispetti 
+    * `pass` : è un placeholder dei blocchi di codice serve per non generare errori a livello sintattico viene utilizzo per temporeggiare quando non si sa ancora cosa far eseguire ad un blocco
+  * `def __init__(self,key1,key2,...)` : la definizione di questa funzone costruttore " __init__ " e dei suoi parametri dove " self " viene utilizzato per indicare l'oggetto stesso che stiamo creando
+    * `import inspect` : utilizzando il modulo nativo inspect si possono ottenere i parametri delle classi creando una variabile e poi stampanda a terminale il valore "parametri = inspect.signature(NomeClass.__ init__) cosi da poter vedere effettivamente quali parametri sono richiesti e quali sono di default
+  * `self` : questo parametro sarà richiamato ogni volta poiche indichiamo che i metodi interni alla classe che abbimao creato sia riferiti all'istanza creata da quella classe specifica 
+* `class genitore` : la classe genitore o superclasse è una classe principale utilizzata per passare metodi ad una classe figlio in modo da mantenere al minimo il codice
+* `class figlio` : la classe figlio o sottoclasse è una classe che eredita metodi di una classe genitore da poter riutilizzare sulle sue istanze 
+  * `class Sottoclasse(Superclasse):` : questa sintassi genera una classe comprensiva dei metodi della superclasse una classe figlia può ereditare anche metodi di piu classi genitori
+<br>
+
+* ```QUANDO CREIAMO UNA SOTTOCLASSE E UTILIZZIAMO IL METODO COSTRUTTORE I PARAMETRI DEL COSTRUTTORE DELLA SUPERCLASSE ANDRANNO PERSI PER MANTENERLI SI UTILIZZA UNA FUNZIONE SPECIALE "super(). __ init__(parametro1,parametro2,parametro3) POSSIAMO QUINDI DEFINIRE IL NOSTRO COSTRUTTORE CON I NOSTRI PARAMETRI E AGGIUNGERE PARAMETRI NUOVI E NELLA FUNZIONE INSERIRE LA FUNZIONE SPECIALE```
+* `Overriding` : all'interno di una sottoclasse possiamo cambiare i valori di un metodo ereditato per renderlo esplicito per quella classe figlio cosi da poter utilizzare di base lo stesso metodo ma con risultati diversi a seconda dell'evenienza, basta ridefinire il metodo nella sottoclasse
+* `` __ `` : l'utilizzo di due underscore davanti ad un attributo rende quell'attributo "privato" pertanto non sarà possibile leggerlo o modificarlo dall' esterno
+* `getter` : metodo pubblico per leggere il dato protetto " def dato(self): return self.__dato_privato
+* `setter` : metodo publico per modificare il dato ma con controlli " def dato(self, mod): if mod > 0 : self.__dato_privato  += mod else: print(non puoi modificare il dato) "
+* ` __str__ ` : questo metodo è utilizzato per stampare una rappresentazione testuale dell'oggetto " def __str__(self): return f" tutti i dati dell'oggetto "
+* ` ciclo for ` : è possibile utilizzare un ciclo for per far eseguire un comando presente nella superclasse e nella classe ereditaria creando una variabile contenente i diversi oggetti e inserendo nel ciclo for l'esecuzione del metodo comune
+* ` @property ` :
+* ` @classmethod ` : decoratore per utilizzare le variabili di classe direttamente e svolgere funzioni specifiche per ogni singola classe
+* `@staticmethod` : questo decoratore è una funzione indipendente serve per mantere una logica interna della classe stessa senza toccare i dati utile per svolgere funzioni interne
+* ` variabili di classe` : è possibile dichiarare una variabile di classe universale per tutti gli oggetti di quella specifica classe semplicemente dichiarando la variabile prima del costruttore
+* `metodi di paragone nelle classi` :
+      * `__eq __(self, other):` : Gestisce l'uguale (==) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
+      * `__lt __(self, other):` : Gestisce il minore di (<) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
+      * `__gt __(self, other):` : Gestisce il maggiore di (>) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
+* `.__mro__` : print(NomeSottoclasse.__mro __) stampera a schermo la linea di successione dell'ereditarietà dei comandi
+* `di base l'importanza,la priorità delle classi genitori è data da come vengono richiata nella sottoclasse (es. class Sottoclasse(ClasseMaggiore, ClasseMinore) )`
+* __PROTOCOLLI DI ITERAZIONE
+      * `__ iter__` : indica che la classe puo essere inserita in un ciclo for
+      * `__ next__` : contiene la logica per consegnare l'elemento successivo tenendo traccia del livello di iterazione tramite un contatore e quando non ci sono piu elementi eseguire il comando " raise StopIteration " per bloccare il ciclo iterativo
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
