@@ -140,6 +140,12 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * __PROTOCOLLI DI ITERAZIONE
       * `__ iter__` : indica che la classe puo essere inserita in un ciclo for
       * `__ next__` : contiene la logica per consegnare l'elemento successivo tenendo traccia del livello di iterazione tramite un contatore e quando non ci sono piu elementi eseguire il comando " raise StopIteration " per bloccare il ciclo iterativo
+* `Dict comprehension` : la creazione di un dizionario sfruttando una sola riga di codice list = [1,-2,-3,4] valore_numeri
+* `zip()` : il metodo zip unisce due liste accoppiando in una Tupla tutti gli elementi che trova con lo stesso indice se le liste hanno numero di indici diverso il metodo zip() si ferma all'indice piu corto durante l'iterazione il nome della lista iterando e creando una Tupla lista1 = [1,2,3,4] lista2 = [a,b,c,d] lista3 = [True,False,True,False] accoppiati = zip(lista1,lista2,lista3) il risultato saranno " n tuple per n indici " accoppiati = [(1,a,true), (2,b,False), (3,c,True), (4,d,False)]
+* `function lambda` : permette di scrivere una funziona semplice su una sola riga nome_function = lambda parametro: parametro qualcosa l'utilizzo della parola lambda dentro la function è obbligatorio e possono contenere solo una singola espressione "calcola_media = lambda a, b: (a + b) /2 ---> print(calcola_media(15, 40))"
+* `map()` : il metodo map prende due elementi "una funzione, un iterabile" esegue la funzione su ogni elemente dell'iterabile restituendo una nuova variabile modificata
+* `upper()` : trasforma tutta la stringa in caratteri MAIUSCOLI
+* `filter()` : il metodo filter è utile per mantenere solo gli elementi che soddisfano la condizione true quindi se la condizione è vera mantiene l'elemento altrimento lo scarta
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
