@@ -84,6 +84,7 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
   * `valori di default` : i valori di default in python vanno scritti sempre per ultimi il loro posizionamento prima dei valori obbligatori genera un errore di sintassi " def nomeFunction(parametro, parametro = default) "
   * ` *args ` : utilizzare questo parametro speciale permette di inserire in una funziona infiniti parametri
   * `**kwargs` : utilizzare questo parametro speciale permette di inserire infiniti parametri per creare un dizionario chiave valore
+  * ` (parametri obbligatori, *args, **kwargs) ` questo è lo schema di inserimento dei parametri obbligatorio da rispettare
 * `try : .. except: .. ` : try esegue il codice potenzialmente "pericoloso" except esegue codice in caso di rottura del primo blocco 
   * all'interno del blocco try/except possono essere racchiusi altri due blocchi
     * `else` :questo blocco viene eseguito solo se il try non ha generato errori
@@ -127,6 +128,8 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * `setter` : metodo publico per modificare il dato ma con controlli " def dato(self, mod): if mod > 0 : self.__dato_privato  += mod else: print(non puoi modificare il dato) "
 * ` __str__ ` : questo metodo è utilizzato per stampare una rappresentazione testuale dell'oggetto " def __str__(self): return f" tutti i dati dell'oggetto "
 * ` ciclo for ` : è possibile utilizzare un ciclo for per far eseguire un comando presente nella superclasse e nella classe ereditaria creando una variabile contenente i diversi oggetti e inserendo nel ciclo for l'esecuzione del metodo comune
+* ` DECORATORE ` : un decoratore accetta come parametro una funzione...al suo interno aggiunge logica attorno a quella funzione e la restituisce completa e modificata
+    * i decoratori al loro interno hanno la funzione wrapper " def wrapper(): " che di base non accetta parametri ma accetta i parametri speciali *args, **kwargs in piu il decoratore si attacca alla prima funzione al di sotto dello stesso che trova
 * ` @property ` :
 * ` @classmethod ` : decoratore per utilizzare le variabili di classe direttamente e svolgere funzioni specifiche per ogni singola classe
 * `@staticmethod` : questo decoratore è una funzione indipendente serve per mantere una logica interna della classe stessa senza toccare i dati utile per svolgere funzioni interne
@@ -146,6 +149,8 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * `map()` : il metodo map prende due elementi "una funzione, un iterabile" esegue la funzione su ogni elemente dell'iterabile restituendo una nuova variabile modificata
 * `upper()` : trasforma tutta la stringa in caratteri MAIUSCOLI
 * `filter()` : il metodo filter è utile per mantenere solo gli elementi che soddisfano la condizione true quindi se la condizione è vera mantiene l'elemento altrimento lo scarta
+* `reduce()` : questa funzione permette di collassare il primo parametro con il secondo parametro e cosi via non è una funzione nativa ha pertanto bisogno di essere importata tramite "functools" iserendo a inizio dello script "from functools import reduce"
+* ` .join() ` : questo metodo serve ad unire elementi tramite un separatore dichiarato (es. tot = ", ".join(collezione) )
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
