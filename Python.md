@@ -151,6 +151,39 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * `filter()` : il metodo filter è utile per mantenere solo gli elementi che soddisfano la condizione true quindi se la condizione è vera mantiene l'elemento altrimento lo scarta
 * `reduce()` : questa funzione permette di collassare il primo parametro con il secondo parametro e cosi via non è una funzione nativa ha pertanto bisogno di essere importata tramite "functools" iserendo a inizio dello script "from functools import reduce"
 * ` .join() ` : questo metodo serve ad unire elementi tramite un separatore dichiarato (es. tot = ", ".join(collezione) )
+* ` datetime ` :modulo nativo di python utilizzato per la gestione oraria un modulo che essendo nativo basta importare con " import datetime " si utilizza il datetime.datetime.now() per restituire l'ora esatta corrente e il metodo " strftime("%H:%M:%S.%f") per la formattazione
+* ` os ` : il modulo nativo " os " (Operation system) permette di utilizzare python per intervenire direttamente sul sistema
+    * os.getcwd() : (operation system get current working directory) restituisce il percorso esatto della cartella in cui ci troviamo
+    * os.listdir() : (operation system list directory) restituisce una lista con i nomi di tutti i file e le cartella presenti in quel percorso
+    * os.mkdir("nome_directory") : (operation system make directory) crea una nuova cartella
+    * os.remove("nome_file) : operation system remove file comando per cancellazione di file
+    * os.rmdir("nome_directory) : operation system remove directory comando per cancellazione directory
+    * os.path.join() : costruzione di un percorso per file o cartelle in modo da non errare con le barre \ / poiche automaticamente inserisce la barra a seconda del sistema
+  * ` pathlib ` : import path modulo per gestire percorsi e concatenare comandi di os
+    * pathlib.Path.cwd() : restituisce il percorso pathlib.Path.cwd()
+    * pathlib.Path("percorso/file.txt").read_text() : segue il percorso e entra in lettura 
+    * pathlib.Path("percorso/directory").mkdir() : segue il percorso ed esegue mkdir
+    * pathlib.Path(".").glob("*.py") : quest comando è utilizzato per trovare all'interno di una directory tutti i file corrispondenti a quesll'estensione in questo caso .py
+### MODULI JSON " import json " modulo nativo python
+* `json.dumps()` : trasforma un dizionario python in una STRINGA JSON
+* `json.loads()` : trasforma una STRINGA JSON in un dizionario python
+* `json.dump()` : trasforma un dizionario pythonin un FILE JSON
+* `json.load()` : trasforma un FILE JSON in un dizionario python
+* ` Pretty Print import pprint o from pprint import pprint è un modulo per la formattazione dei dati complessi utilizzando parametri come "indent=? , sort_keys=true ,separators=(':' , '|') , default=funzione utilizzabile sui dati python come dizionari tuple liste ecc..`
+* `importazione modulo nativo csv` : "import csv"
+* `CSV comma-separated values` : file di gestione tabelle di dati, OGNI RIGA RAPPRESENTA UNA RIGA DELLA TABELLA E LE COLONNE SONO SEPOARATE DA " , o ; "
+* `csv.reader()` : legge il file riga per riga restituendo ogni riga come una lista di stringhe
+* `csv.writer()` : permette di scrivere liste di dati direttamente in formato tabellare
+* `with open("nome_file",mode="w",newline="",encoding="utf-8)as file: write = csv.writer(file,delimiter=";") write.writerows(file_dati_da_scrivere)` : scrittura con separatore ; per separare colonne
+* `with open("automobili.csv", mode="r", encoding="utf-8") as file: lettore = csv.reader(file, delimiter=";") for riga in lettore: print(riga)` : lettura con separatore ; separatore colonne
+### moduli RANDOM e SECRETS
+`random è usato per la generazione casuale di numeri utilizzati per simulazioni campionamento ma non è sicuro per scopi crittografici perche la sua randomizzazione p pseudo-casuale e quindi un hacker potrebbe prevederla. Per questo motivo è stato inserito il modulo Secrets per generare numeri e stringhe crittograficamente sicuri come password temporanee token e chiavi segrete`
+* `random.randint(a,b)` :genera un numero intero casuale compreso tra a e b
+* `random.choice(lista)` estrae un singolo elemento a caso da una lista
+* `random.random` : genera un numero casuale decimale tra 0 e 1 utilizzato per float casuali e probabilità
+* `random.shuffle` : utilizzato per mescolar eelementi all'interno di una lista, creare ordini casuali, randomizzare dataset
+* ` secrets.choice(lista) ` : estrae un elemento a caso ma con un imprevedibilità maggiore utilizzando statistiche e fluttazioni di sistema
+* ` secrets.token_hex(16) ` : genera una chiave esadecimale utilizzando come seed di partenze statistiche e fluttuazioni del pc stesso rendendo impossibile da prevedere
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
