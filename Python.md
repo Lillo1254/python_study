@@ -128,6 +128,9 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * `setter` : metodo publico per modificare il dato ma con controlli " def dato(self, mod): if mod > 0 : self.__dato_privato  += mod else: print(non puoi modificare il dato) "
 * ` __str__ ` : questo metodo è utilizzato per stampare una rappresentazione testuale dell'oggetto " def __str__(self): return f" tutti i dati dell'oggetto "
 * ` ciclo for ` : è possibile utilizzare un ciclo for per far eseguire un comando presente nella superclasse e nella classe ereditaria creando una variabile contenente i diversi oggetti e inserendo nel ciclo for l'esecuzione del metodo comune
+* `.mro()` : metodo utilizzabile su una classe per verificare la sequenza di esecuzione delle funzioni interne ed ereditate
+* ` __enter__ ` : permette alla classi di diventare un oggetto da usare con " with " il metodo enter fa l'apertura del blocco effettua un return
+* ` __exit__ ` : permette alla classi di diventare un oggetto da usare con " with " il metodo exit termina e gestisce errori del blocco
 * ` DECORATORE ` : un decoratore accetta come parametro una funzione...al suo interno aggiunge logica attorno a quella funzione e la restituisce completa e modificata
     * i decoratori al loro interno hanno la funzione wrapper " def wrapper(): " che di base non accetta parametri ma accetta i parametri speciali *args, **kwargs in piu il decoratore si attacca alla prima funzione al di sotto dello stesso che trova
 * ` @property ` :
@@ -135,14 +138,14 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * `@staticmethod` : questo decoratore è una funzione indipendente serve per mantere una logica interna della classe stessa senza toccare i dati utile per svolgere funzioni interne
 * ` variabili di classe` : è possibile dichiarare una variabile di classe universale per tutti gli oggetti di quella specifica classe semplicemente dichiarando la variabile prima del costruttore
 * `metodi di paragone nelle classi` :
-      * `__eq __(self, other):` : Gestisce l'uguale (==) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
-      * `__lt __(self, other):` : Gestisce il minore di (<) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
-      * `__gt __(self, other):` : Gestisce il maggiore di (>) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
+      * `__eq__(self, other):` : Gestisce l'uguale (==) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
+      * `__lt__(self, other):` : Gestisce il minore di (<) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
+      * `__gt__(self, other):` : Gestisce il maggiore di (>) Il parametro other rappresenta l'altro oggetto con cui stiamo facendo il paragone
 * `.__mro__` : print(NomeSottoclasse.__mro __) stampera a schermo la linea di successione dell'ereditarietà dei comandi
 * `di base l'importanza,la priorità delle classi genitori è data da come vengono richiata nella sottoclasse (es. class Sottoclasse(ClasseMaggiore, ClasseMinore) )`
 * __PROTOCOLLI DI ITERAZIONE
-      * `__ iter__` : indica che la classe puo essere inserita in un ciclo for
-      * `__ next__` : contiene la logica per consegnare l'elemento successivo tenendo traccia del livello di iterazione tramite un contatore e quando non ci sono piu elementi eseguire il comando " raise StopIteration " per bloccare il ciclo iterativo
+      * `__iter__` : indica che la classe puo essere inserita in un ciclo for
+      * `__next__` : contiene la logica per consegnare l'elemento successivo tenendo traccia del livello di iterazione tramite un contatore e quando non ci sono piu elementi eseguire il comando " raise StopIteration " per bloccare il ciclo iterativo
 * `Dict comprehension` : la creazione di un dizionario sfruttando una sola riga di codice list = [1,-2,-3,4] valore_numeri
 * `zip()` : il metodo zip unisce due liste accoppiando in una Tupla tutti gli elementi che trova con lo stesso indice se le liste hanno numero di indici diverso il metodo zip() si ferma all'indice piu corto durante l'iterazione il nome della lista iterando e creando una Tupla lista1 = [1,2,3,4] lista2 = [a,b,c,d] lista3 = [True,False,True,False] accoppiati = zip(lista1,lista2,lista3) il risultato saranno " n tuple per n indici " accoppiati = [(1,a,true), (2,b,False), (3,c,True), (4,d,False)]
 * `function lambda` : permette di scrivere una funziona semplice su una sola riga nome_function = lambda parametro: parametro qualcosa l'utilizzo della parola lambda dentro la function è obbligatorio e possono contenere solo una singola espressione "calcola_media = lambda a, b: (a + b) /2 ---> print(calcola_media(15, 40))"
@@ -184,6 +187,44 @@ Non adatto a sistemi di real-time, software grafici, kernel, driver <br>
 * `random.shuffle` : utilizzato per mescolar eelementi all'interno di una lista, creare ordini casuali, randomizzare dataset
 * ` secrets.choice(lista) ` : estrae un elemento a caso ma con un imprevedibilità maggiore utilizzando statistiche e fluttazioni di sistema
 * ` secrets.token_hex(16) ` : genera una chiave esadecimale utilizzando come seed di partenze statistiche e fluttuazioni del pc stesso rendendo impossibile da prevedere
+### modulo RE espressioni regolari
+qeusto modulo serve a cercare , convalidare ed estrarre patter di testo complessi utilizzati per verificare se in un testo in un prmpt ci sono dati sensibili o se i dati sono stati scritti nella maniera corretta si usano i Regex. durante l'utilizzo per non incorrere in lettura codice da parte di python in maniera sconveniente dobbiamo mettere davanti al simboli speciale (r"simbolo_speciale")
+* ``` le Regex usano dei simboli speciali
+  - \d significa "un numero da 0 a 9"
+  - + significa "uno o piu di quello precedente"
+  - [a-zA-Z] significa "una lettera qualsiasi" ```
+* `re.search ` : ricerca di un pattern ovunque nella stringa restituendo la prima occorrenza tramite metodo .group() restituisce oggetto `re.search(r"regex", "testo originale")`
+* ` re.match ` : controlla se la stringa inizia con il pattern `re.match(r"regex", "testo originale")` restituisce un oggetto
+* ` re.fullmatch() ` : controlla se la stringa combacia completamente `re.fullmatch(r"regex", "testo originale")`
+* ` re.findall() ` : trova tutte le corrispondenze `re.findall(r"regex", "testo originale")`
+* ` re.finditer() ` : restituisce tutte le occorrenze ma con iteratori specificando le posizioni contesti e gruppi `re.finditer(r"regex", "testo orgiinale")` restituisce un oggetto
+* ` re.sub() ` sostituisce tutte le occorrenze del pattern `re.sub(r"regex" , "sostituzione" , "testo originale)`
+
+### Utilizzo di dataclass module per istanziare un oggetto e creare una classe " from dataclasses import dataclass "
+* `@dataclass` : questo decoratore dichiara l'inizio dell'utilizzo del dataclass subito sotto a se stesso
+* ```@dataclass
+      class Utente:
+      nome: str = "non definito"
+      eta: int
+      ```
+* è obbligatorio utilizzare il type per dichiararele variabili interne
+* istanza dell'oggetto ----> user1 = Utente("alessandro", 32)
+* usando il @dataclass poiche mischia la sequenza per la quale vengono inseriti i parametri obbligatori e di default è consigliabili creare classi con tutti parametri di default per evitare errori
+* @dataclass(kw_only=True) costringe l'utente ad inserire i parametri con il nome esatto delle variabili (anno=1990) eliminando il problema dell'inserimento dei dati di default
+### Modulo nativo itertools " import itertools "
+* `itertools.combinations(lista, r)` : estrae tutte le combinazioni possibili di lunghezza r ignorando l'ordine
+* `itertools.permutations(lista, r)` : estrae tutte le disposizioni possibili tenendo conto dell'ordine
+* `itertools.product(lista1, lista2 o repeat=x)` : crea il "prodotto cartesiano" abbinando ogni elemento della prima lista con ogni elemento della seconda lista il repeat moltiplica la lista per se stessa
+### Collezioni avanzate collections
+* `modulo nativo collections ` : fornisce strutture dati potenziate from collections import Counter
+* `variabile=Counter(lista)` : con il metodo counter di collections ci vengono restituiti gli elementi e il numero degli elementi uguali
+* `.most_common(n)` : ci restituisce numero "n" elementi usato piu di frequente con il numero di volte presente nella lista
+* ` .split ` : viene utilizzato per troncare la frase quando c'è uno "  spazio  " cosi da creare una lista di parole senza spazi aggiunti
+### Introspezione " hasattr, getaatr, setattr capacità del programma di esaminare se stesso mentre è in esecuzione
+* `hasattr(oggetto, "nome")` : (Has Attribute) restituisce True se l'oggetto possiede una variabile o un metodo con quel nome e False se invece no
+* `getattr(oggetto,"nome")` :  (Get Attribute) estrae letteralmente quella variabile o quel metodo partendo dal suo nome in formato stringa
+* `setattr(oggetto, "nome, valore)` : (Set Attribute) inietta una nuova variabile dentro un oggetto esistente
+### Decoratori con argomenti
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
