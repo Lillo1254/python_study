@@ -225,6 +225,18 @@ qeusto modulo serve a cercare , convalidare ed estrarre patter di testo compless
 * `getattr(oggetto,"nome")` :  (Get Attribute) estrae letteralmente quella variabile o quel metodo partendo dal suo nome in formato stringa
 * `setattr(oggetto, "nome, valore)` : (Set Attribute) inietta una nuova variabile dentro un oggetto esistente
 ### Decoratori con argomenti
+```I decoratori possono accettare argomenti e utilizzarli all'interno dei loro livelli interni tramite 1 livello 2 livello 3 livello di funzione compreso nel wrapper per creare funzioni strutturate e utilizzabili in base all'evenienza per far ripetere o inserire argomenti all'interno di una funzione esterna evitando di dover riscrivere codice piu volte ```
+* ` __call__ ` : questo metodo all'interno di una classe permette di utilizzare le parentesi () sull'oggetto creato da quella classe per far si che assuma un comportamento come una funzione. Di norma se usassimo su un oggetto le () python andrebbe in errore poiche dovremmo usare il dot ma con il metodo `__call__` questo comportamento cambia
+
+## blocco concorrenza
+GIL global interpreter lock questo processo impedisce a python di utilizzare piu thread contemporaneamente per l'esecuzione di un programma quindi python utilizzera un solo core del processore per volta.<br>
+* `Multi-threading(IO-Bound)` : adatto quando il programma deve attendere risposte esterne se è in attesa il thread si sposta e aspetta la risposta su un altro core lasciando libero il core per l'esecuzione di un altro programma
+* `Multi-Processing(CPU-Bound)` : adatto quando il programma deve fare calcoli matematici complessi python creera processi separati ognuno con il proprio GIL idipendente sfruttando finalmente tutti i core del processore 
+* ` import threading import Thread ` : modulo nativo per Multi-Threading, il modulo Thread è una classe che crea un'oggetto per creare oggetti Thread indipendenti
+* `variabile = Thread(target=funzione, args=(tupla_parametri)) ` : creiamo un oggetto Thread con target la funzione da svolgere e una tupla di argomenti se abbiamo solo un parametro da passare aggiungia " , " dopo il primo parametro
+* `variabile.start()` : usiamo il metodo .start sugli oggetti creati per farli partire in contemporanea
+* `variabile.join()` : aspettiamo che l'esecuzione sia terminata prima di finire il processo
+``` per far svolgere processi a diversi thread poiche occorrono risultati di thread precedenti dobbiamo utilizzare il comando .start() e il comando .join() come fossero dei semafori per creare e far passare in un secondo momento variabili generate dal primo thread chesaranno necessarie per l'esecuzione del secondo thread e via discorrendo ```
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
