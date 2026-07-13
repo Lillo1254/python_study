@@ -246,6 +246,28 @@ GIL global interpreter lock questo processo impedisce a python di utilizzare piu
 * ` await ` : specifica a python di aspettare qualcosa
 * ` asyncio.gather() ` : lancia piu funzioni asincrone contemporaneamente attende che tutte finiscono le restituisce in ordine
 * ` asyncio.run(funzioni) ` : metodo per l'esecuzione di funzioni asincrone di coroutine una solo per volta
+### unit test nativi
+il modulo unittest è lo standard di python per creare test unitari che erificano il corretto funzionamento di una singola specifica funzione o unità di codice. per usarlo si crea una classe che eredita da `unittest.TestCase` all'interno di questa classe ogni metodo che inizia con la parola `test_` viene visto da python come un test automatico e per verificarne il funzionamento si utilizzano le `asserzioni`
+* creazione della funzione
+* creazione della classe ereditiera di unittest.TestCase
+* richiamare la funzione creata all'interno della classe unit ma con "test_" davanti al nome
+* utilizzare assert per verifiche
+* impostare if __name__ == '__main__': unittest.main()
+<br>
+
+* ` setUp(self) ` : Viene eseguito in automatico da Python PRIMA di ogni singolo test contenuto nella classe. Si usa per preparare l'ambiente (es. creare l'oggetto da testare)
+* `tearDown(self)` : Viene eseguito in automatico DOPO ogni singolo test. Si usa per "pulire" (es. cancellare file temporanei o chiudere connessioni)
+
+### utilizzare libreria esterna " coverage " per lanciare i file .py con " coverage run file.py e successivamente coverage report per stampare sul terminale una tabella contenente le informazioni sui file testati
+
+### Architettura delle API con FastAPI e ASGI
+FastAPI si basa su ASGI (Asynchronous Server Gateway Interface) ASGI permette la gestione nativa di connessioni asincrone, WebSocket e richieste a lungo termine senza bloccare il server, sfruttando l'Event Loop di asyncio FastAPI  è costruito sopra due pilastri fondamentali `Starlette` Un toolkit web ASGI ad altissime prestazioni per la gestione del routing e delle richieste HTTP e `Pydantic` Una libreria per la validazione dei dati e la gestione dei tipi (Data Parsing) tramite i Type Hints di Python
+
+
+
+
+
+
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
