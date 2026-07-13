@@ -1,6 +1,6 @@
 import time
-from threading import Thread
-
+from threading import Thread, Lock
+"""
 def scarica_dati(sito):
     print(f"[Thread] inizio download dal sito {sito}")
     time.sleep(1)
@@ -39,7 +39,7 @@ print("Analisi completate")
 risultati = {}
 def moltiplica_differita(nome, numero1, numero2):
     print(f"[Thread] Inizio moltiplicazione di {numero1} e {numero2}")
-    time.sleep(2)
+
     risultato = numero1 * numero2
     print(f"[Thread] Risultato: {numero1} * {numero2} = {risultato}")
     risultati[nome] = risultato
@@ -58,7 +58,7 @@ prodotto_finale = risultati["thread1"] * risultati["thread2"]
 
 def ultima_molt():
     print(f"[Thread] Inizio moltiplicazione di {risultati['thread1']} e {risultati['thread2']}")
-    time.sleep(2)
+
     risultato = risultati["thread1"] * risultati["thread2"]
     print(f"[Thread] Risultato: {risultati['thread1']} * {risultati['thread2']} = {risultato}")
     risultati["thread3"] = risultato
@@ -68,3 +68,49 @@ t3.start()
 t3.join()
 
 print(f"Moltiplicazioni completate risultato: {risultati}")
+
+
+conto_bancario = 100
+lucchetto = Lock()
+def deposita_denaro(importo):
+    global conto_bancario
+
+    with lucchetto:
+        print(f"[Thread] Sto leggendo il saldo attuale: {conto_bancario}€")
+        nuovo_saldo = conto_bancario + importo
+        conto_bancario = nuovo_saldo
+        print(f"[Thread] Saldo aggiornato: {conto_bancario}€")
+
+the1 = Thread(target=deposita_denaro, args=(55,))
+the2 = Thread(target=deposita_denaro, args=(-33,))
+
+the1.start()
+the2.start()
+
+the1.join()
+the2.join()
+
+print(f"Saldo finale: {conto_bancario}")
+"""
+token_totali= 0 
+lucchetto2 = Lock()
+
+def aggiungi_token(quantita):
+    global token_totali
+
+    with lucchetto2:
+        correnti = token_totali
+        time.sleep(2)
+        token_totali = correnti + quantita
+        print(f"[Thread] Token aggiornati: {token_totali}")
+
+thre1 = Thread(target=aggiungi_token, args=(10,))
+thre2 = Thread(target=aggiungi_token, args=(20,))
+
+thre1.start()
+thre2.start()
+
+thre1.join()
+thre2.join()
+
+print(f"Token totali: {token_totali}")

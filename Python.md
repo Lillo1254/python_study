@@ -1,4 +1,5 @@
 ## Python è un linguaggio di programmazione dinamico, interpretato, multiparadigma , pensato per essere leggibile, veloce da sviluppare e versatile usato quando serve produttività, integrazione, analisi dati, automazione, prototipazione rapida, sviluppo web, machine learning e scripting di sistema.
+#### Estensioni consigliate per vscode : Pylance(microsoft), Python(Microsoft), Python Debug(Microsoft), Python Enviroment(Microsoft), Indent-Rainbow(Oderwat)
 - Automazione per script ripetitivi, gestione file, processi, API
 - Sviluppo web con utilizzo di django , flask, fastAPI
 - Data science utilizzando librerie come NumPy, Pandas, Matplotlib, scikit-learn
@@ -232,11 +233,19 @@ qeusto modulo serve a cercare , convalidare ed estrarre patter di testo compless
 GIL global interpreter lock questo processo impedisce a python di utilizzare piu thread contemporaneamente per l'esecuzione di un programma quindi python utilizzera un solo core del processore per volta.<br>
 * `Multi-threading(IO-Bound)` : adatto quando il programma deve attendere risposte esterne se è in attesa il thread si sposta e aspetta la risposta su un altro core lasciando libero il core per l'esecuzione di un altro programma
 * `Multi-Processing(CPU-Bound)` : adatto quando il programma deve fare calcoli matematici complessi python creera processi separati ognuno con il proprio GIL idipendente sfruttando finalmente tutti i core del processore 
-* ` import threading import Thread ` : modulo nativo per Multi-Threading, il modulo Thread è una classe che crea un'oggetto per creare oggetti Thread indipendenti
+* ` from threading import Thread ` : modulo nativo per Multi-Threading, il modulo Thread è una classe che crea un'oggetto per creare oggetti Thread indipendenti
 * `variabile = Thread(target=funzione, args=(tupla_parametri)) ` : creiamo un oggetto Thread con target la funzione da svolgere e una tupla di argomenti se abbiamo solo un parametro da passare aggiungia " , " dopo il primo parametro
 * `variabile.start()` : usiamo il metodo .start sugli oggetti creati per farli partire in contemporanea
 * `variabile.join()` : aspettiamo che l'esecuzione sia terminata prima di finire il processo
 ``` per far svolgere processi a diversi thread poiche occorrono risultati di thread precedenti dobbiamo utilizzare il comando .start() e il comando .join() come fossero dei semafori per creare e far passare in un secondo momento variabili generate dal primo thread chesaranno necessarie per l'esecuzione del secondo thread e via discorrendo ```
+* ` from threading import Lock ` : questo modulo ci permette di inserire all'interno della funzione un " with Lock(): che premettera l'esecuzione di quella funzione attraverso i thread solo uno per volta evitando cosi di creare un errore nel calcolo (Race Condition)
+* ` if __name__ == '__main__': ` : istruzione obbligatoria per creare i processi con il multi-processing per evitare loop infiniti di creazione di processi. un modulo python principale ha `__name__ == '__main__' ` un modulo importato ha `__name__ == 'nome_modulo' ` 
+  * all'interno della " if " generare il processo e farlo partire
+### async def await l'asincronia per gestire attese ed elaborazione
+* `async def` : dichiarazione di una funzione asincrona
+* ` await ` : specifica a python di aspettare qualcosa
+* ` asyncio.gather() ` : lancia piu funzioni asincrone contemporaneamente attende che tutte finiscono le restituisce in ordine
+* ` asyncio.run(funzioni) ` : metodo per l'esecuzione di funzioni asincrone di coroutine una solo per volta
 ``` 
 nota importante la sintassi di python non prevede la chiusura della riga con " ; " ma basta andare a capo al fine di ottenere l'interruzione di quella riga 
 ```
