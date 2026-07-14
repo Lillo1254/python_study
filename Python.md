@@ -260,9 +260,30 @@ il modulo unittest è lo standard di python per creare test unitari che erifican
 
 ### utilizzare libreria esterna " coverage " per lanciare i file .py con " coverage run file.py e successivamente coverage report per stampare sul terminale una tabella contenente le informazioni sui file testati
 
-### Architettura delle API con FastAPI e ASGI
-FastAPI si basa su ASGI (Asynchronous Server Gateway Interface) ASGI permette la gestione nativa di connessioni asincrone, WebSocket e richieste a lungo termine senza bloccare il server, sfruttando l'Event Loop di asyncio FastAPI  è costruito sopra due pilastri fondamentali `Starlette` Un toolkit web ASGI ad altissime prestazioni per la gestione del routing e delle richieste HTTP e `Pydantic` Una libreria per la validazione dei dati e la gestione dei tipi (Data Parsing) tramite i Type Hints di Python
-
+### Architettura delle API con FastAPI e ASGI metodo .get per richiesta informaizoni .post per invio dati
+FastAPI si basa su ASGI (Asynchronous Server Gateway Interface) ASGI permette la gestione nativa di connessioni asincrone, WebSocket e richieste a lungo termine senza bloccare il server, sfruttando l'Event Loop di asyncio FastAPI  è costruito sopra due pilastri fondamentali `Starlette` Un toolkit web ASGI ad altissime prestazioni per la gestione del routing e delle richieste HTTP e `Pydantic` Una libreria per la validazione dei dati e la gestione dei tipi (Data Parsing) tramite i Type Hints di Python visto che dovremo installare librerie esterne necessarie al funzionamento per prima cos per ogni progetto che richiede dipendenze per il suo funzionamente impostiamo una virtual enviroment
+* ` python -m venv venv ` : questo comando usato nel terminale genera la cartella /venv poi va attivata la funzionalità tramite...
+* ` venv\Scripts\activate ` : su terminale cmd o powershell per attivare venv se attivata correttamente sulla riga di comando ci sarà la parola venv
+* ` source vevn/Scripts/activate ` : su terminale gitbash che non mostra la parola venv a riga di comando ma possiamo verificare la corretta attivazione inserendo...
+* ` whick python ` : ci restituira un percorso se tutto è stato creato correttamente ci troveremo nella cartella venv " /questo/è/il/percorso/della/nostra_cartella/venv/Scripts/python
+* ` pip install "fastapi[standard] ` : comadno per l'installazione della dipendenza fastapi
+* ` fastapi dev nome_file.py ` comando per eseguire il server fastapi
+* ` uvicorn nome_file_senza_estensione:app --host 127.0.0.1 --port 8000 --reload ` : attivazione del server tramite uvicorn per attivazione istanza ASGI 
+* ` from pydantic import BaseModel, Field ` creazione rotte post con l'utilizzo della creazione di un istanza tramite una classe che eredita da BaseModel, Field ha lo stesso comportamento di Query per la validazione dati aggiungendo possibilità di confronto nei parametri come ge=17 ecc
+### architettura modulare con APIrouter
+APIRouter può essere pensato come una sorta di "mini-applicazione" indipendente. Permette di raggruppare rotte omogenee (es. tutte le rotte per la gestione degli utenti, tutte le rotte per i pagamenti, tutte le rotte per le inferenze IA) all'interno di file separati, per poi iniettarle e centralizzarle nell'applicazione principale FastAPI
+``` 
+struttura del progetto
+mio_progetto/
+│
+├── routers/
+│   ├── utenti.py      <-- Gestisce solo il modulo utenti
+│   └── ia.py          <-- Gestisce solo il modulo IA
+│
+└── main.py            <-- Il punto di ingresso
+```
+* routers/utenti.py in questo file sara gestita solo la logico legata agli utenti
+* importazione di APIRouter da fastapi e non di FastAPI
 
 
 
